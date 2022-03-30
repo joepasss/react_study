@@ -1,10 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 
 import { useState } from 'react';
 
 import AboutPage from './pages/AboutPage';
 
+import Card from './components/shared/Card';
 import Header from './components/Header';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
@@ -48,6 +49,15 @@ function App() {
           />
           <Route path='/about' element={<AboutPage />} />
         </Routes>
+
+        <Card>
+          <NavLink to='/' activeClassName='active'>
+            Home
+          </NavLink>
+          <NavLink to='/about' activeClassName='active'>
+            About
+          </NavLink>
+        </Card>
       </div>
     </BrowserRouter>
   );
