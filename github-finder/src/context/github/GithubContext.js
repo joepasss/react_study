@@ -37,13 +37,11 @@ export const GithubProvider = ({ children }) => {
     });
   };
 
-  // Clear
-  const clearUsers = () => {
+  // Clear users from state
+  const clearUsers = () =>
     dispatch({
       type: 'CLEAR_USERS',
-      payload: [],
     });
-  };
 
   // Set loading
   const setLoading = () => dispatch({ type: 'SET_LOADING' });
