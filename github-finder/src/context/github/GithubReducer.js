@@ -14,6 +14,13 @@ const githubReducer = (state, action) => {
       };
     }
 
+    case 'CLEAR_USERS': {
+      return {
+        ...state,
+        users: action.payload,
+      };
+    }
+
     default:
       return state;
   }
