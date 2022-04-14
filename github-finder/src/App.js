@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Alert from './components/layout/Alert';
+import User from './pages/User';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path='/about' element={<About />} />
                 <Route path='/notfound' element={<NotFound />} />
                 <Route path='/*' element={<NotFound />} />
+                <Route path='/user/:login' element={<User />} />
               </Routes>
             </main>
 
