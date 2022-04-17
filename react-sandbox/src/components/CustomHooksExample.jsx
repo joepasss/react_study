@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import useLoaclStorage from '../hooks/UseLocalStorage';
 
 function CustomHooksExample() {
   // const { data, loading } = useFetch(
@@ -18,22 +18,46 @@ function CustomHooksExample() {
   //   </div>
   // );
 
-  const [task, setTask] = useState('');
+  const [task, setTask] = useLoaclStorage('task', '');
+  const [tasks, setTasks] = useLoaclStorage('tasks', []);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    const taskObj = {
+      task,
+      completed: false,
+      date: new Date().toLocaleDateString(),
+    };
+
+    setTasks([...tasks, taskObj]);
+  };
 
   return (
-    <form className='w-50'>
-      <div className='mb-3'>
-        <label htmlFor='' className='form-label'>
-          Task
-        </label>
-        <input
-          className='form-control'
-          type='text'
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-        />
-      </div>
-    </form>
+    <>
+      <form onSubmit={onSubmit} className='w-50'>
+        <div className='mb-3'>
+          <label htmlFor='' className='form-label'>
+            Task
+          </label>
+          <input
+            className='form-control'
+            type='text'
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+          />
+        </div>
+        <button type='submit' className='btn btn-primary'>
+          Submit
+        </button>
+      </form>
+
+      <hr />
+
+      {tasks.map((task) => (
+        <h3 key={task.date}>{task.task}</h3>
+      ))}
+    </>
   );
 }
 
