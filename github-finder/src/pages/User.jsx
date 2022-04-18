@@ -3,20 +3,26 @@ import { useParams, Link } from 'react-router-dom';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 
 import GithubContext from '../context/github/GithubContext';
+import { getUserAndRepos } from '../context/github/GithubActions';
 
 import Spinner from '../components/layout/Spinner';
 import RepoList from '../components/repos/RepoList';
 
 function User() {
-  const { getUser, user, loading, getUserRepos, repos } =
-    useContext(GithubContext);
+  const { user, repos, loading, dispatch } = useContext(GithubContext);
 
   const params = useParams();
 
   useEffect(() => {
-    getUser(params.login);
-    getUserRepos(params.login);
-  }, []);
+    dispatch({ type: 'SET_LOADING' });
+
+    const getUserData = async () => {
+      const userData = await getUserAndRepos(params.login);
+      dispatch({ type: 'GET_USER_AND_REPOS', payload: userData });
+    };
+
+    getUserData();
+  }, [dispatch, params.login]);
 
   const {
     name,
@@ -138,6 +144,16 @@ function User() {
             <div className='stat-title pr-5'>Following</div>
             <div className='stat-value pr-5 text-3xl md:text-4xl'>
               {following}
+            </div>
+          </div>
+
+          <div className='stat'>
+            <div className='stat-figure text-secondary'>
+              <FaUserFriends className='text-3xl md:text-5xl' />
+            </div>
+            <div className='stat-title pr-5'>Followers</div>
+            <div className='stat-value pr-5 text-3xl md:text-4xl'>
+              {followers}
             </div>
           </div>
 
