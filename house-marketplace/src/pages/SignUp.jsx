@@ -1,8 +1,9 @@
-// import dependancies
+// Dependancies
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-// firebase
+// Firebase
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -11,7 +12,7 @@ import {
 import { db } from '../firebase.config';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 
-// import Icons
+// Icons
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 
@@ -59,7 +60,7 @@ function SignUp() {
 
       navigate('/');
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong with registration');
     }
   };
 
