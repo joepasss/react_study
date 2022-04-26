@@ -762,6 +762,10 @@ button {
   text-align: center;
 }
 
+.formInputSmall {
+  width: calc(6rem + 0.6667vw);
+}
+
 .formInputName {
   padding: 0.9rem 1rem;
   width: 90%;
