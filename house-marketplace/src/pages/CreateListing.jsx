@@ -48,8 +48,6 @@ function CreateListing() {
     regularPrice,
     discountedPrice,
     images,
-    latitude,
-    longitude,
   } = formData;
 
   const auth = getAuth();
@@ -133,7 +131,7 @@ function CreateListing() {
                 break;
               case 'running':
                 console.log('Upload is running');
-
+                break;
               default:
                 break;
             }
