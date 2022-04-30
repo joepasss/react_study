@@ -1,6 +1,5 @@
 // dependancies
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 // Firebase
@@ -21,8 +20,6 @@ import ListingItem from '../components/ListingItem';
 function Offers() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  const params = useParams();
 
   useEffect(() => {
     const fetchListings = async () => {
