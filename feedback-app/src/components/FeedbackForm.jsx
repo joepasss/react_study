@@ -16,7 +16,7 @@ function FeedbackForm() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    if (feedbackEdit.edit === true) {
+    if (feedbackEdit.edit) {
       setBtnDisabled(false);
       setText(feedbackEdit.item.text);
       setRating(feedbackEdit.item.rating);

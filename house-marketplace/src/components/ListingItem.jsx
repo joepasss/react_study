@@ -1,4 +1,7 @@
+// dependancies
 import { Link } from 'react-router-dom';
+
+// assets
 import { ReactComponent as DeleteIcon } from '../assets/svg/deleteIcon.svg';
 import bedIcon from '../assets/svg/bedIcon.svg';
 import bathtubIcon from '../assets/svg/bathtubIcon.svg';
@@ -12,7 +15,7 @@ function ListingItem({ listing, id, onDelete }) {
       >
         <img
           src={listing.imageUrls[0]}
-          alt={listing.name}
+          alt='listing.name'
           className='categoryListingImg'
         />
         <div className='categoryListingDetails'>
@@ -29,6 +32,7 @@ function ListingItem({ listing, id, onDelete }) {
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
             {listing.type === 'rent' && ' / Month'}
           </p>
+
           <div className='categoryListingInfoDiv'>
             <img src={bedIcon} alt='bed' />
             <p className='categoryListingInfoText'>

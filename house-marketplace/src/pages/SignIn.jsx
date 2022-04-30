@@ -1,4 +1,4 @@
-// Dependancies
+// depandencies
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -10,7 +10,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 
-// Components
+// components
 import OAuth from '../components/OAuth';
 
 function SignIn() {
@@ -54,7 +54,7 @@ function SignIn() {
     <>
       <div className='pageContainer'>
         <header>
-          <p className='pageHeader'>Welcome Back!</p>
+          <p className='pageHeader'>Welcome back!</p>
         </header>
 
         <main>
@@ -62,7 +62,7 @@ function SignIn() {
             <input
               type='email'
               className='emailInput'
-              placeholder='Email'
+              placeholder='email'
               id='email'
               value={email}
               onChange={onChange}
@@ -72,7 +72,7 @@ function SignIn() {
               <input
                 type={showPassword ? 'text' : 'password'}
                 className='passwordInput'
-                placeholder='Password'
+                placeholder='password'
                 id='password'
                 value={password}
                 onChange={onChange}
@@ -87,7 +87,7 @@ function SignIn() {
             </div>
 
             <Link to='/forgot-password' className='forgotPasswordLink'>
-              Forgot Password
+              forgot password
             </Link>
 
             <div className='signInBar'>
@@ -101,7 +101,7 @@ function SignIn() {
           <OAuth />
 
           <Link to='/sign-up' className='registerLink'>
-            Sign Up Instead
+            Sign Up instead
           </Link>
         </main>
       </div>

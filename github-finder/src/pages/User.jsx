@@ -1,10 +1,9 @@
 import { useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 
 import GithubContext from '../context/github/GithubContext';
-import { getUsersAndRepos } from '../context/github/GithubActcions';
+import { getUserAndRepos } from '../context/github/GithubActions';
 
 import Spinner from '../components/layout/Spinner';
 import RepoList from '../components/repos/RepoList';
@@ -18,7 +17,7 @@ function User() {
     dispatch({ type: 'SET_LOADING' });
 
     const getUserData = async () => {
-      const userData = await getUsersAndRepos(params.login);
+      const userData = await getUserAndRepos(params.login);
       dispatch({ type: 'GET_USER_AND_REPOS', payload: userData });
     };
 
@@ -90,7 +89,7 @@ function User() {
               </div>
             </div>
 
-            <div className='w-full rounded-lg shadow-md bg-base-100 stats'>
+            <div className='w-full rounded-lg shadow-lg shadow-md bg-base stats'>
               {location && (
                 <div className='stat'>
                   <div className='stat-title text-md'>
@@ -123,7 +122,7 @@ function User() {
                     Twitter
                     <div className='text-lg stat-value'>
                       <a
-                        href={`https://twitter.com/${twitter_username}`}
+                        href={`https://${twitter_username}`}
                         target='_blank'
                         rel='noreferrer'
                       >
@@ -142,9 +141,9 @@ function User() {
             <div className='stat-figure text-secondary'>
               <FaUsers className='text-3xl md:text-5xl' />
             </div>
-            <div className='stat-title pr-5'>Followers</div>
+            <div className='stat-title pr-5'>Following</div>
             <div className='stat-value pr-5 text-3xl md:text-4xl'>
-              {followers}
+              {following}
             </div>
           </div>
 
@@ -152,9 +151,9 @@ function User() {
             <div className='stat-figure text-secondary'>
               <FaUserFriends className='text-3xl md:text-5xl' />
             </div>
-            <div className='stat-title pr-5'>Following</div>
+            <div className='stat-title pr-5'>Followers</div>
             <div className='stat-value pr-5 text-3xl md:text-4xl'>
-              {following}
+              {followers}
             </div>
           </div>
 

@@ -1,3 +1,4 @@
+import './useMemoExample.scss';
 import { useState, useEffect, useRef, useMemo } from 'react';
 
 function UseMemoExample() {
@@ -36,8 +37,9 @@ function UseMemoExample() {
       </h2>
 
       <button onClick={onClick} className='btn btn-primary'>
-        Rerender
+        Re Render
       </button>
+
       <h3>Renders: {renders.current}</h3>
     </div>
   );
@@ -48,7 +50,6 @@ function getSqrt(n) {
     console.log(i);
   }
 
-  console.log('Expensive function called!');
   return Math.sqrt(n);
 }
 

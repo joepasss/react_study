@@ -1,8 +1,13 @@
+// depandencies
 import { Navigate, Outlet } from 'react-router-dom';
+
+// hooks
 import { useAuthStatus } from '../hooks/useAuthStatus';
+
+// components
 import Spinner from './Spinner';
 
-const PrivateRoute = () => {
+function PrivateRoute() {
   const { loggedIn, checkingStatus } = useAuthStatus();
 
   if (checkingStatus) {
@@ -10,6 +15,6 @@ const PrivateRoute = () => {
   }
 
   return loggedIn ? <Outlet /> : <Navigate to='/sign-in' />;
-};
+}
 
 export default PrivateRoute;

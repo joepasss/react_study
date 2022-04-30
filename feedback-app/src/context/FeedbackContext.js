@@ -5,10 +5,10 @@ import { createContext, useState, useEffect } from 'react';
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  // hard coded data
+  // hard coded data from ui
   // const [feedback, setFeedback] = useState(FeedbackData);
+
+  const [isLoading, setIsLoading] = useState(true);
 
   // fetch data from json-server
   const [feedback, setFeedback] = useState([]);
@@ -18,18 +18,25 @@ export const FeedbackProvider = ({ children }) => {
 
   const fetchFeedback = async () => {
     const response = await fetch(`/feedback?_sort=id&_order=desc`);
+
     const data = await response.json();
 
     setFeedback(data);
     setIsLoading(false);
   };
 
-  const [feedbackEdit, setFeedbackEdit] = useState({
-    item: {},
-    edit: false,
-  });
+  const [feedbackEdit, setFeedbackEdit] = useState({ item: {}, edit: false });
 
-  // Add Feedback
+  // delete Feedback
+  const deleteFeedback = async (id) => {
+    if (window.confirm('Are you sure you want to delete?')) {
+      await fetch(`/feedback/${id}`, { method: 'DELETE' });
+
+      setFeedback(feedback.filter((item) => item.id !== id));
+    }
+  };
+
+  // add Feedback
   const addFeedback = async (newFeedback) => {
     const response = await fetch('/feedback', {
       method: 'POST',
@@ -42,15 +49,6 @@ export const FeedbackProvider = ({ children }) => {
     const data = await response.json();
 
     setFeedback([data, ...feedback]);
-  };
-
-  // Delete feedback
-  const deleteFeedback = async (id) => {
-    if (window.confirm('Are you sure you want to delete?')) {
-      await fetch(`/feedback/${id}`, { method: 'DELETE' });
-
-      setFeedback(feedback.filter((item) => item.id !== id));
-    }
   };
 
   // Set item to be update

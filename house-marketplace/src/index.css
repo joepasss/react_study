@@ -78,7 +78,6 @@ button {
   top: -3%;
   right: -2%;
 }
-
 .editIcon {
   cursor: pointer;
   position: absolute;
@@ -329,7 +328,7 @@ button {
 .swiperSlideDiv {
   position: relative;
   width: 100%;
-  height: calc(20rem + 10vw);
+  height: 100%;
 }
 
 .swiperSlideImg {
@@ -761,6 +760,10 @@ button {
   margin-right: 3rem;
   padding: 0.9rem 0.7rem;
   text-align: center;
+}
+
+.formInputSmall {
+  width: calc(6rem + 0.6667vw);
 }
 
 .formInputName {

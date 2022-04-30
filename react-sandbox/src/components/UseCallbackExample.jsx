@@ -1,3 +1,4 @@
+import './useCallbackExample.scss';
 import React, { useState, useCallback } from 'react';
 
 function UseCallbackExample() {
@@ -22,7 +23,7 @@ const Button = React.memo(({ addTask }) => {
 
   return (
     <div>
-      <button onClick={addTask} className='btn btn-primary'>
+      <button className='btn btn-primary' onClick={addTask}>
         AddTask
       </button>
     </div>

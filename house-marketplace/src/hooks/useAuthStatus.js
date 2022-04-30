@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react';
-
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 export const useAuthStatus = () => {
@@ -26,9 +25,3 @@ export const useAuthStatus = () => {
 
   return { loggedIn, checkingStatus };
 };
-
-// protected routes in v6 ref
-// https://stackoverflow.com/questions/65505665/protected-route-with-firebase
-
-// fix memory leak warning ref
-// https://stackoverflow.com/questions/59780268/cleanup-memory-leaks-on-unmounted-component-in-react-hooks

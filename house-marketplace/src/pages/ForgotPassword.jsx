@@ -1,9 +1,12 @@
+// depandencies
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
+// Firebase
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
+// Icon
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
 
 function ForgotPassword() {
@@ -20,7 +23,7 @@ function ForgotPassword() {
       const auth = getAuth();
 
       await sendPasswordResetEmail(auth, email);
-      toast.success('Email was sent');
+      toast.success('Email was sent!');
     } catch (error) {
       toast.error('Could not send reset email');
     }
@@ -29,7 +32,7 @@ function ForgotPassword() {
   return (
     <div className='pageContainer'>
       <header>
-        <p className='pageHeader'>Forgot Password</p>
+        <p className='pageHeader'>i forgor 💀</p>
       </header>
 
       <main>
@@ -37,13 +40,14 @@ function ForgotPassword() {
           <input
             type='email'
             className='emailInput'
-            placeholder='Email'
+            placeholder='email'
             id='email'
             value={email}
             onChange={onChange}
           />
+
           <Link className='forgotPasswordLink' to='/sign-in'>
-            Sign In
+            Sign in
           </Link>
 
           <div className='signInBar'>

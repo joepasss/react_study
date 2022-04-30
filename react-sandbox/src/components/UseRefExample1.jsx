@@ -1,3 +1,4 @@
+import './useRefExample1.scss';
 import { useRef } from 'react';
 
 function UseRefExample1() {
@@ -6,7 +7,7 @@ function UseRefExample1() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(inputRef.current.value);
+
     inputRef.current.value = 'Hello';
     inputRef.current.style.backgroundColor = 'red';
     paraRef.current.innerText = 'Goodbye';

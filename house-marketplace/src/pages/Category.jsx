@@ -1,5 +1,5 @@
-// depandencies
-import { useEffect, useState } from 'react';
+// dependancies
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -27,25 +27,23 @@ function Category() {
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        // Get reference
-        const listingsRef = collection(db, 'listings');
+        // Get Reference
+        const listingRef = collection(db, 'listings');
 
-        // Create a query
+        // Create a Query
         const q = query(
-          listingsRef,
+          listingRef,
           where('type', '==', params.categoryName),
           orderBy('timestamp', 'desc'),
           limit(10)
         );
 
-        // Execute query
+        // Excute Query
         const querySnap = await getDocs(q);
 
         const listings = [];
 
         querySnap.forEach((doc) => {
-          // console.log(doc.data());
-
           return listings.push({
             id: doc.id,
             data: doc.data(),
@@ -80,9 +78,10 @@ function Category() {
             <ul className='categoryListings'>
               {listings.map((listing) => (
                 <ListingItem
-                  listing={listing.data}
                   id={listing.id}
+                  listing={listing.data}
                   key={listing.id}
+                  onDelete={() => {}}
                 />
               ))}
             </ul>

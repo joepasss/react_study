@@ -1,4 +1,4 @@
-// Dependancies
+// depandencies
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -16,7 +16,7 @@ import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg';
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 
-// Components
+// components
 import OAuth from '../components/OAuth';
 
 function SignUp() {
@@ -48,7 +48,6 @@ function SignUp() {
         email,
         password
       );
-
       const user = userCredential.user;
 
       updateProfile(auth.currentUser, {
@@ -71,15 +70,15 @@ function SignUp() {
     <>
       <div className='pageContainer'>
         <header>
-          <p className='pageHeader'>Welcome Back!</p>
+          <p className='pageHeader'>Welcome to join us!</p>
         </header>
 
         <main>
           <form onSubmit={onSubmit}>
             <input
-              type='text'
+              type='name'
               className='nameInput'
-              placeholder='Name'
+              placeholder='name'
               id='name'
               value={name}
               onChange={onChange}
@@ -88,7 +87,7 @@ function SignUp() {
             <input
               type='email'
               className='emailInput'
-              placeholder='Email'
+              placeholder='email'
               id='email'
               value={email}
               onChange={onChange}
@@ -98,7 +97,7 @@ function SignUp() {
               <input
                 type={showPassword ? 'text' : 'password'}
                 className='passwordInput'
-                placeholder='Password'
+                placeholder='password'
                 id='password'
                 value={password}
                 onChange={onChange}
@@ -116,9 +115,9 @@ function SignUp() {
               Forgot Password
             </Link>
 
-            <div className='signUpBar'>
-              <p className='signUpText'>Sign Up</p>
-              <button className='signUpButton'>
+            <div className='signInBar'>
+              <p className='signInText'>Sign Up</p>
+              <button className='signInButton'>
                 <ArrowRightIcon fill='#ffffff' width='34px' height='34px' />
               </button>
             </div>
@@ -127,7 +126,7 @@ function SignUp() {
           <OAuth />
 
           <Link to='/sign-in' className='registerLink'>
-            Sign In Instead
+            Sign In instead
           </Link>
         </main>
       </div>

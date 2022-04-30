@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 function Todo() {
-  const [loding, setLoding] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [todo, setTodo] = useState({});
 
   const isMounted = useRef(true);
@@ -13,18 +13,18 @@ function Todo() {
         setTimeout(() => {
           if (isMounted.current) {
             setTodo(data);
-            setLoding(false);
+            setLoading(false);
           }
         }, 1000);
-      });
 
-    // Runs when component is unmounted
-    return () => {
-      isMounted.current = false;
-    };
+        // Runs when component is unmounted
+        return () => {
+          isMounted.current = false;
+        };
+      });
   }, [isMounted]);
 
-  return loding ? <h3>Loading ...</h3> : <h1>{todo.title}</h1>;
+  return loading ? <h3>Loading ...</h3> : <h1>{todo.title}</h1>;
 }
 
 export default Todo;

@@ -1,3 +1,4 @@
+import './useRefExample2.scss';
 import { useState, useEffect, useRef } from 'react';
 
 function UseRefExample2() {
@@ -8,7 +9,7 @@ function UseRefExample2() {
   useEffect(() => {
     renders.current = renders.current + 1;
     prevName.current = name;
-  }, [name]);
+  });
 
   return (
     <div>
