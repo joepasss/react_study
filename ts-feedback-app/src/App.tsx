@@ -8,11 +8,17 @@ import { FeedbackList } from './components/FeedbackList';
 export const App: FC = () => {
   const [feedback, setFeedback] = useState<feedbacks>(FeedbackData);
 
+  const deleteFeedback = (id: string) => {
+    const newFeedback = feedback.filter((item) => item.id !== id);
+
+    setFeedback(newFeedback);
+  };
+
   return (
     <>
       <Header />
       <div className='container'>
-        <FeedbackList feedbacks={feedback} />
+        <FeedbackList feedbacks={feedback} handleDelete={deleteFeedback} />
       </div>
     </>
   );
