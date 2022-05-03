@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { FC } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
 import { feedback } from '../data/FeedbackData';

@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from 'react';
+import { FC } from 'react';
 
 import { feedbacks, feedback } from '../data/FeedbackData';
 import { FeedbackItem } from './FeedbackItem';
