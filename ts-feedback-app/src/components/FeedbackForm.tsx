@@ -1,5 +1,6 @@
 import { ChangeEvent, FC, useState } from 'react';
 import { Card } from './shared/Card';
+import { Button } from './shared/Button';
 
 export const FeedbackForm: FC = () => {
   const [text, setText] = useState<string>('');
@@ -18,7 +19,7 @@ export const FeedbackForm: FC = () => {
             placeholder='Write a review'
             onChange={(e) => handleTextChange(e)}
           />
-          <button type='submit'>Send</button>
+          <Button type='submit'>Send</Button>
         </div>
       </form>
     </Card>
