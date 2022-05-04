@@ -4,6 +4,11 @@ export interface feedback {
   text: string;
 }
 
+export interface newFeedback {
+  rating: number;
+  text: string;
+}
+
 export interface feedbacks extends Array<feedback> {}
 
 export const FeedbackData: feedbacks = [

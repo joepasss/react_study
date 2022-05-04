@@ -1,9 +1,14 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, FormEvent, useState } from 'react';
 import { Card } from './shared/Card';
 import { Button } from './shared/Button';
 import { RatingSelect } from './RatingSelect';
+import { newFeedback } from '../data/FeedbackData';
 
-export const FeedbackForm: FC = () => {
+interface Props {
+  handleAdd: (newFeedback: newFeedback) => void;
+}
+
+export const FeedbackForm: FC<Props> = ({ handleAdd }) => {
   const [text, setText] = useState<string>('');
   const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
   const [message, setMessage] = useState<string | null>('');
@@ -24,11 +29,27 @@ export const FeedbackForm: FC = () => {
     setText(e.target.value);
   };
 
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (text.trim().length > 10) {
+      const newFeedback = {
+        text,
+        rating,
+      };
+
+      handleAdd(newFeedback);
+
+      setText('');
+      setRating(10);
+    }
+  };
+
   return (
     <Card>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <h2>How would you rate your service with us?</h2>
-        <RatingSelect setRating={setRating} />
+        <RatingSelect setRating={(rating) => setRating(rating)} />
         <div className='input-group'>
           <input
             type='text'
