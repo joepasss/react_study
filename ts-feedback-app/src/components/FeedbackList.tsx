@@ -1,19 +1,16 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { feedbacks, feedback } from '../data/FeedbackData';
+import FeedbackContext, { feedback } from '../context/FeedbackContext';
 import { FeedbackItem } from './FeedbackItem';
 
-interface Props {
-  feedbacks: feedbacks;
-  handleDelete: (id: string) => void;
-}
+export const FeedbackList: FC = () => {
+  const { feedback } = useContext(FeedbackContext);
 
-export const FeedbackList: FC<Props> = ({ feedbacks, handleDelete }) => {
   return (
     <div className='feedback-list'>
       <AnimatePresence>
-        {feedbacks.map((item: feedback) => {
+        {feedback.map((item: feedback) => {
           return (
             <motion.div
               key={item.id}
@@ -21,11 +18,7 @@ export const FeedbackList: FC<Props> = ({ feedbacks, handleDelete }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <FeedbackItem
-                key={item.id}
-                item={item}
-                handleDelete={handleDelete}
-              />
+              <FeedbackItem key={item.id} item={item} />
             </motion.div>
           );
         })}

@@ -1,17 +1,4 @@
-export interface feedback {
-  id: string;
-  rating: number;
-  text: string;
-}
-
-export interface newFeedback {
-  rating: number;
-  text: string;
-}
-
-export interface feedbacks extends Array<feedback> {}
-
-export const FeedbackData: feedbacks = [
+const FeedbackData = [
   {
     id: '1',
     rating: 10,
@@ -38,3 +25,5 @@ export const FeedbackData: feedbacks = [
     text: 'Lorem ipsum dolor sit amet consectur adipisicing elit.',
   },
 ];
+
+export default FeedbackData;

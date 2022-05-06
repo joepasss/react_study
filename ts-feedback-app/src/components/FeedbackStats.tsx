@@ -1,21 +1,19 @@
-import { FC } from 'react';
-import { feedbacks } from '../data/FeedbackData';
+import { FC, useContext } from 'react';
+import FeedbackContext, { feedback } from '../context/FeedbackContext';
 
-interface Props {
-  feedbacks: feedbacks;
-}
+export const FeedbackStats: FC = () => {
+  const { feedback } = useContext(FeedbackContext);
 
-export const FeedbackStats: FC<Props> = ({ feedbacks }) => {
   let average: number | string =
-    feedbacks.reduce((acc, cur) => {
+    feedback.reduce((acc: number, cur: feedback) => {
       return acc + cur.rating;
-    }, 0) / feedbacks.length;
+    }, 0) / feedback.length;
 
   average = average.toFixed(1);
 
   return (
     <div className='feedback-stats'>
-      <h4>{feedbacks.length} Reviews</h4>
+      <h4>{feedback.length} Reviews</h4>
       <h4>Average Rating: {average === 'NaN' ? 0 : average}</h4>
     </div>
   );
