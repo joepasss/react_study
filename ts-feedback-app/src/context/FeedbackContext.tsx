@@ -1,6 +1,6 @@
 import { createContext, useState, FC, ReactNode } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import FeedbackData from '../data/feedbackData';
+import FeedbackData from '../data/FeedbackData';
 
 interface Props {
   children: ReactNode;
