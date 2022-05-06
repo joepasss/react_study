@@ -1,4 +1,13 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react';
+import {
+  ChangeEvent,
+  Dispatch,
+  FC,
+  SetStateAction,
+  useState,
+  useEffect,
+  useContext,
+} from 'react';
+import FeedbackContext from '../context/FeedbackContext';
 
 interface Props {
   setRating: Dispatch<SetStateAction<number>>;
@@ -6,6 +15,12 @@ interface Props {
 
 export const RatingSelect: FC<Props> = ({ setRating }) => {
   const [selected, setSelected] = useState<number>(10);
+
+  const { feedbackEdit } = useContext(FeedbackContext);
+
+  useEffect(() => {
+    setSelected(feedbackEdit.item.rating);
+  }, [feedbackEdit]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSelected(+e.currentTarget.value);

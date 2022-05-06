@@ -1,4 +1,11 @@
-import { ChangeEvent, FC, FormEvent, useState, useContext } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  useState,
+  useContext,
+  useEffect,
+} from 'react';
 import FeedbackContext from '../context/FeedbackContext';
 
 import { Card } from './shared/Card';
@@ -6,12 +13,20 @@ import { Button } from './shared/Button';
 import { RatingSelect } from './RatingSelect';
 
 export const FeedbackForm: FC = () => {
-  const { addFeedback } = useContext(FeedbackContext);
+  const { addFeedback, feedbackEdit, updateItem } = useContext(FeedbackContext);
 
   const [text, setText] = useState<string>('');
   const [btnDisabled, setBtnDisabled] = useState<boolean>(true);
   const [message, setMessage] = useState<string | null>('');
   const [rating, setRating] = useState<number>(10);
+
+  useEffect(() => {
+    if (feedbackEdit.edit) {
+      setBtnDisabled(false);
+      setText(feedbackEdit.item.text);
+      setRating(feedbackEdit.item.rating);
+    }
+  }, [feedbackEdit]);
 
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (text === '') {
@@ -37,7 +52,11 @@ export const FeedbackForm: FC = () => {
         rating,
       };
 
-      addFeedback(newFeedback);
+      if (feedbackEdit.edit) {
+        updateItem(feedbackEdit.item.id, newFeedback);
+      } else {
+        addFeedback(newFeedback);
+      }
 
       setText('');
       setRating(10);
@@ -57,7 +76,7 @@ export const FeedbackForm: FC = () => {
             value={text}
           />
           <Button type='submit' isDisabled={btnDisabled}>
-            Send
+            {feedbackEdit.edit ? 'Update' : 'Upload'}
           </Button>
         </div>
         {message && <div className='message'>{message}</div>}

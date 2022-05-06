@@ -22,6 +22,13 @@ export interface feedbacks extends Array<feedback> {}
 const FeedbackContext = createContext<any | undefined>(undefined);
 
 export const FeedbackProvider: FC<Props> = ({ children }) => {
+  const [feedbackEdit, setFeedbackEdit] = useState<{
+    item: feedback;
+    edit: boolean;
+  }>({
+    item: { id: '', text: '', rating: 10 },
+    edit: false,
+  });
   const [feedback, setFeedback] = useState<feedbacks>(FeedbackData);
 
   const deleteFeedback = (id: string) => {
@@ -40,8 +47,37 @@ export const FeedbackProvider: FC<Props> = ({ children }) => {
     setFeedback([data, ...feedback]);
   };
 
+  const editFeedback = (item: feedback) => {
+    setFeedbackEdit({
+      item,
+      edit: true,
+    });
+  };
+
+  const updateItem = (id: string, updItem: feedback) => {
+    setFeedback(
+      feedback.map((item: feedback) =>
+        item.id === id ? { ...item, ...updItem } : item
+      )
+    );
+
+    setFeedbackEdit({
+      item: { id: '', rating: 10, text: '' },
+      edit: false,
+    });
+  };
+
   return (
-    <FeedbackContext.Provider value={{ feedback, deleteFeedback, addFeedback }}>
+    <FeedbackContext.Provider
+      value={{
+        feedback,
+        feedbackEdit,
+        deleteFeedback,
+        addFeedback,
+        editFeedback,
+        updateItem,
+      }}
+    >
       {children}
     </FeedbackContext.Provider>
   );
