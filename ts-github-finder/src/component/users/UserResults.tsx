@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Users, User } from '../../types/UserTypes';
 
 import { Spinner } from '../layout/Spinner';
+import { UserItem } from './UserItem';
 
 export const UserResults: FC = () => {
   const [users, setUsers] = useState<Users>([]);
@@ -31,7 +32,7 @@ export const UserResults: FC = () => {
   return (
     <div className='grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2'>
       {users.map((user: User) => (
-        <h3 key={user.node_id}>{user.login}</h3>
+        <UserItem key={user.id} user={user} />
       ))}
     </div>
   );
