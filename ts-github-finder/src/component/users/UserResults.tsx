@@ -1,6 +1,8 @@
 import { FC, useEffect, useState } from 'react';
 import { Users, User } from '../../types/UserTypes';
 
+import { Spinner } from '../layout/Spinner';
+
 export const UserResults: FC = () => {
   const [users, setUsers] = useState<Users>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -23,7 +25,7 @@ export const UserResults: FC = () => {
   };
 
   if (loading) {
-    return <h3>loading</h3>;
+    return <Spinner />;
   }
 
   return (
