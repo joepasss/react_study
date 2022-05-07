@@ -1,9 +1,13 @@
 import { FC } from 'react';
 
+// Components
+import { UserResults } from '../component/users/UserResults';
+
 export const Home: FC = () => {
   return (
     <div>
-      <h1 className='text-6xl'>Welcome</h1>
+      {/* SEARCH COMPONENT */}
+      <UserResults />
     </div>
   );
 };
