@@ -22,9 +22,8 @@ export const App: FC = () => {
             <Route path='/notfound' element={<NotFound />} />
             <Route path='/*' element={<NotFound />} />
           </Routes>
-
-          <Footer />
         </main>
+        <Footer />
       </div>
     </Router>
   );
