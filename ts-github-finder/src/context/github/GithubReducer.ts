@@ -6,7 +6,7 @@ interface State {
 }
 
 interface Action {
-  type: 'GET_USERS' | 'SET_LOADING';
+  type: 'GET_USERS' | 'SET_LOADING' | 'CLEAR_USERS';
   payload?: any;
 }
 
@@ -23,6 +23,12 @@ export const githubReducer = (state: State, action: Action) => {
       return {
         ...state,
         loading: true,
+      };
+
+    case 'CLEAR_USERS':
+      return {
+        ...state,
+        users: [],
       };
 
     default:
