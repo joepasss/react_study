@@ -14,12 +14,14 @@ interface Props {
 export const GithubProvider: FC<Props> = ({ children }) => {
   const initialState = {
     users: [],
-    loading: true,
+    loading: false,
   };
 
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   const fetchUsers = async () => {
+    dispatch({ type: 'SET_LOADING' });
+
     const response = await fetch(`${GITHUB_URL}/users`, {
       headers: {
         Authorization: `token: ${GITHUB_TOKEN}`,

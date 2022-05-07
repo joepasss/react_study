@@ -6,8 +6,8 @@ interface State {
 }
 
 interface Action {
-  type: 'GET_USERS';
-  payload: any;
+  type: 'GET_USERS' | 'SET_LOADING';
+  payload?: any;
 }
 
 export const githubReducer = (state: State, action: Action) => {
@@ -17,6 +17,12 @@ export const githubReducer = (state: State, action: Action) => {
         ...state,
         users: action.payload,
         loading: false,
+      };
+
+    case 'SET_LOADING':
+      return {
+        ...state,
+        loading: true,
       };
 
     default:
