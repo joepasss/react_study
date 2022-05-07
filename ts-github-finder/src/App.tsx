@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { Navbar } from './component/layout/Navbar';
+import { Footer } from './component/layout/Footer';
 
 export const App: FC = () => {
   return (
@@ -10,6 +11,8 @@ export const App: FC = () => {
         <Navbar />
         <main>
           <h1 className='text-3xl font-bold underline'>HELLO WORLD!</h1>
+
+          <Footer />
         </main>
       </div>
     </Router>
