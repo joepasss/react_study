@@ -1,22 +1,18 @@
 import { useContext } from 'react';
-import { UserContext } from './UserContext';
+import { AuthUser, UserContext } from './UserContext';
 
 export const User = () => {
   const userContext = useContext(UserContext);
 
   const handleLogin = () => {
-    if (userContext) {
-      userContext.setUser({
-        name: 'joe',
-        email: 'joe@gmail.com',
-      });
-    }
+    userContext.setUser({
+      name: 'joe',
+      email: 'joe@gmail.com',
+    });
   };
 
   const handleLogout = () => {
-    if (userContext) {
-      userContext.setUser(null);
-    }
+    userContext.setUser({} as AuthUser);
   };
 
   return (
@@ -30,8 +26,8 @@ export const User = () => {
         </button>
       </div>
       <div className='output-div'>
-        <div>User name is {userContext?.user?.name}</div>
-        <div>User email is {userContext?.user?.email}</div>
+        <div>User name is {userContext.user.name}</div>
+        <div>User email is {userContext.user.email}</div>
       </div>
     </div>
   );

@@ -6,18 +6,18 @@ export type AuthUser = {
 };
 
 type UserContextType = {
-  user: AuthUser | null;
-  setUser: React.Dispatch<React.SetStateAction<AuthUser | null>>;
+  user: AuthUser;
+  setUser: React.Dispatch<React.SetStateAction<AuthUser>>;
 };
 
 type UserContextProviderProps = {
   children: ReactNode;
 };
 
-export const UserContext = createContext<UserContextType | null>(null);
+export const UserContext = createContext({} as UserContextType);
 
 export const UserContextProvider = ({ children }: UserContextProviderProps) => {
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [user, setUser] = useState<AuthUser>({} as AuthUser);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
