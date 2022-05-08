@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { User } from './components/state/User';
+import { Counter } from './components/state/Counter';
 
 export const App: FC = () => {
   return (
     <div className='App'>
-      <User />
+      <Counter />
     </div>
   );
 };
