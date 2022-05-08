@@ -6,7 +6,7 @@ type AuthUser = {
 };
 
 export const User = () => {
-  const [user, setUser] = useState<AuthUser | null>(null);
+  const [user, setUser] = useState<AuthUser>({} as AuthUser);
 
   const handleLogin = () => {
     setUser({
@@ -15,26 +15,17 @@ export const User = () => {
     });
   };
 
-  const handleLogout = () => {
-    setUser(null);
-  };
-
   return (
     <div className='container'>
       <div className='input-div mb-2'>
         <button className='button' onClick={handleLogin}>
           Login
         </button>
-        <button className='button ml-2' onClick={handleLogout}>
-          Logout
-        </button>
       </div>
-      {user !== null && (
-        <div className='output-div'>
-          <div>User name is {user.name}</div>
-          <div>User email is {user.email}</div>
-        </div>
-      )}
+      <div className='output-div'>
+        <div>User name is {user.name}</div>
+        <div>User email is {user.email}</div>
+      </div>
     </div>
   );
 };
