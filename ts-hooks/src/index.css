@@ -47,14 +47,16 @@
 }
 
 .button {
-  font-size: 2rem;
-  padding: 0.25rem 1rem;
-  border: 1px solid rgb(155, 155, 155);
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
+  margin: 1rem;
 
-  background-color: rgb(210, 210, 210);
+  background-color: #3f51b5;
+  color: white;
+  font-weight: 200;
   border-radius: 0.5rem;
-  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.043);
   cursor: pointer;
+  border: none;
 }
 
 .button:hover,
