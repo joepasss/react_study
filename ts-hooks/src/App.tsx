@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { UseState } from './components/state/UseState';
+import { User } from './components/state/User';
 
 export const App: FC = () => {
   return (
     <div className='App'>
-      <UseState />
+      <User />
     </div>
   );
 };
